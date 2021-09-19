@@ -1,0 +1,32 @@
+Description: Build fix with impish.
+Author: Arun Kumar Pariyar <openarungeek@gmail.com>
+Bug: https://github.com/linuxdeepin/dde-polkit-agent/issues/26
+Last-Update: 2021-09-19
+---
+
+--- dde-polkit-agent-5.4.12.orig/policykitlistener.cpp
++++ dde-polkit-agent-5.4.12/policykitlistener.cpp
+@@ -236,7 +236,7 @@ void PolicyKitListener::showInfo(const Q
+ 
+ bool PolicyKitListener::isDeepin()
+ {
+-    bool is_deepin = true;
++    bool is_deepin = false;
+     if (m_gsettings != nullptr && m_gsettings->keys().contains(USE_DEEPIN_AUTH)) {
+         is_deepin = m_gsettings->get(USE_DEEPIN_AUTH).toBool();
+     }
+@@ -286,14 +286,12 @@ void PolicyKitListener::fillResult()
+ {
+     if (!m_session.isNull()) {
+         if (m_wasCancelled) {
+-            m_session.data()->result()->setCancel("aciton cancel");
+         } else if (!m_gainedAuthorization) {
+             m_session.data()->result()->setError("password error");
+         }
+         m_session.data()->result()->setCompleted();
+     } else {
+         if (m_wasCancelled) {
+-            m_result->setCancel("action cancel");
+         } else if (!m_gainedAuthorization) {
+             m_result->setError("password error");
+         }

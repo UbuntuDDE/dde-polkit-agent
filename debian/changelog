@@ -1,5 +1,5 @@
-dde-polkit-agent (1.0-1) unstable; urgency=medium
+dde-polkit-agent (5.4.12-1) impish; urgency=medium
 
-  * Initial release
+  * New upstream release.
 
- -- Deepin Packages Builder <packages@deepin.com>  Thu, 04 Aug 2016 15:42:28 +0800
+ -- Arun Kumar Pariyar <openarungeek@gmail.com>  Sun, 19 Sep 2021 22:46:08 +0545
